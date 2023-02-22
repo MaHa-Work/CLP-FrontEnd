@@ -1,0 +1,21 @@
+<br>
+<br>
+<br>
+<div style = "text-align: center;">
+<h2>Registration:</h2>
+<form name="regForm">
+    <label>Email:</label>
+    <input id="regEmail" type="text" required name = "regEmail" [(ngModel)]="regForm.email" #regEmail="ngModel"> 
+    <br>
+    <label>Password:</label>
+    <input id="regPass" type="password" required name = "regPass" [(ngModel)]="regForm.password" #regPass="ngModel">
+    <br>
+    <label>Full Name:</label>
+    <input id="regName" type="text" required name = "regName"[(ngModel)]="regForm.name" #regName="ngModel">
+    <br>
+    <br>
+    <button type="submit" (click)="onSubmit()">Register</button>
+</form>
+<h3 *ngIf="success">SUCCESSFUL REGISTRATION</h3>
+<h3 *ngIf="success===false">Email already registered</h3>
+</div>

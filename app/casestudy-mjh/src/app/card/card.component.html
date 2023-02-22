@@ -1,0 +1,6 @@
+<div style="width: fit-content; ">
+    <p>{{product.name}}</p>
+    <p>{{product.cost | currency}} </p>
+    <button type="button" (click)="order()" *ngIf="!ordered">Order Me!</button>
+    <p *ngIf="ordered">I have been ordered</p>
+</div>

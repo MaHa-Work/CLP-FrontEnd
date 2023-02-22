@@ -1,0 +1,20 @@
+
+<div class="login">
+<h1>Welcome!</h1>
+    <form name="loginForm" novalidate>
+        <label>Email:</label>
+        <input id="email" type="text" required name="email" [(ngModel)]="loginForm.email" #email="ngModel"> 
+        <label>Password:</label>
+        <input id="pass" type="password" required name = "password" [(ngModel)]="loginForm.password" #password="ngModel">
+        <br>
+        <p *ngIf="success===false">Email/Password combo not recognized</p>
+        <br>
+        <br>
+        <button type="submit" (click)="onSubmit()">Login</button>
+        <button type="button" (click)="showReg()" *ngIf="!register">Register</button>
+        <button type="button" (click)="showReg()" *ngIf="register">Cancel</button>
+    </form>
+</div>
+<br>
+<br>
+<app-register *ngIf="register"></app-register>
