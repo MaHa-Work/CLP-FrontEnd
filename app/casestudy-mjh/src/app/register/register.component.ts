@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   regForm:any ={};
+  @Output() regEvent = new EventEmitter<boolean>();
   success:boolean | undefined;
   constructor(private authService:AuthService) { }
 
@@ -16,7 +17,11 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     //console.log(this.regForm);
-    this.authService.register(this.regForm).subscribe(data=>this.success=data);
+    this.authService.register(this.regForm).subscribe(
+      data=>{
+        this.success=data;
+        if (data) setTimeout(()=>{this.regEvent.emit(data)},1500);
+      });
   }
 
 }
